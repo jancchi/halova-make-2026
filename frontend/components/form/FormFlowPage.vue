@@ -66,11 +66,9 @@ function handlePrev() {
 
 <template>
   <div data-testid="form-route-shell" class="min-h-screen grid lg:grid-cols-[4fr_6fr] bg-bg text-text">
-    <aside data-testid="form-left-panel" class="hidden lg:flex flex-col sticky top-0 h-screen pt-24 px-12 pb-12 border-r border-border bg-surface/45 backdrop-blur-sm">
-      <div class="mb-auto">
-        <NuxtLink to="/" class="inline-block text-xl font-display mb-12 uppercase tracking-[0.2em] text-text">
-          Halova
-        </NuxtLink>
+    <aside data-testid="form-left-panel" class="hidden lg:flex flex-col sticky top-0 h-screen pt-24 px-12 pb-12 border-r border-border bg-surface/45 backdrop-blur-sm relative overflow-hidden">
+      <div class="panel-edge-blob" aria-hidden="true"></div>
+      <div class="mb-auto relative z-[1]">
         <h1 class="text-4xl xl:text-5xl font-display font-extrabold leading-tight mb-6">
           Zanechajte <br /> nám vašu <br /> požiadavku.
         </h1>
@@ -79,10 +77,10 @@ function handlePrev() {
         </p>
       </div>
 
-      <div class="mt-auto pt-12 border-t border-border">
+      <div class="mt-auto pt-12 border-t border-border relative z-[1]">
         <div class="text-sm text-muted">
           Potrebujete poradiť? <br />
-          <a href="mailto:podpora@halova.sk" class="text-text underline mt-1 inline-block">podpora@halova.sk</a>
+          <a href="mailto:help@0100.vc" class="text-text underline mt-1 inline-block">help@0100.vc</a>
         </div>
       </div>
     </aside>
@@ -91,7 +89,7 @@ function handlePrev() {
       <header class="sticky top-0 z-20 h-[60px] border-b border-border bg-bg/90 backdrop-blur-sm flex items-center">
         <div class="w-full max-w-[1200px] mx-auto px-4 md:px-6 flex items-center gap-4 md:gap-6">
           <NuxtLink to="/" class="text-sm md:text-base font-display text-caps tracking-[0.08em] text-text shrink-0">
-            Komunita pomáha
+            0100 Komunita pomáha
           </NuxtLink>
 
           <div class="flex-1 min-w-0">
@@ -164,7 +162,41 @@ function handlePrev() {
   transition: all 300ms ease;
 }
 
+.panel-edge-blob {
+  position: absolute;
+  top: -16%;
+  bottom: -16%;
+  left: -64%;
+  z-index: 0;
+  width: 44rem;
+  pointer-events: none;
+  opacity: 0.82;
+  border-radius: 58% 42% 67% 33% / 39% 61% 44% 56%;
+  background:
+    radial-gradient(circle at 64% 24%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 46%),
+    linear-gradient(148deg, rgba(15, 239, 170, 0.62) 0%, rgba(17, 237, 226, 0.44) 72%);
+  filter: blur(1px);
+  transform-origin: 62% 50%;
+  animation: panel-edge-blob-orbit 44s linear infinite;
+}
+
+@keyframes panel-edge-blob-orbit {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.05);
+  }
+  to {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .panel-edge-blob {
+    animation: none;
+  }
+
   .step-enter-active,
   .step-leave-active {
     transition-duration: 0.01ms !important;
