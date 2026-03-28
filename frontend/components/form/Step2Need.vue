@@ -16,10 +16,10 @@
           @click="selectCategory(cat.id)"
           :data-testid="'step2-category-row-' + cat.slug"
           :class="[
-            'text-left p-4 rounded-md border-2 transition-all duration-200 min-h-[132px] flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:outline-none shadow-sm hover:shadow-md',
+            'text-left p-4 rounded-md border-2 transition-all duration-200 min-h-[132px] flex flex-col justify-between focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg focus-visible:outline-none shadow-sm hover:shadow-md',
             formStore.data.category === cat.id
-              ? 'border-text bg-text/10 text-text scale-[1.01]'
-              : 'border-border bg-bg text-text hover:border-text/60 hover:bg-border/10'
+              ? 'border-accent bg-accent/10 text-text scale-[1.01]'
+              : 'border-border bg-surface/40 text-text hover:border-accent/60 hover:bg-surface'
           ]"
         >
           <div class="font-semibold text-base leading-tight mb-2">{{ cat.title }}</div>
@@ -111,8 +111,8 @@ watch(() => formStore.data.description, () => {
 const charCountColor = computed(() => {
   const len = formStore.data.description.length
   if (len > maxChars) return 'text-red-500'
-  if (len > maxChars * 0.9) return 'text-orange-500'
-  return 'text-muted'
+  if (len > maxChars * 0.9) return 'text-text'
+  return 'text-text'
 })
 
 // Validate method to be called by parent component (Step Wizard)

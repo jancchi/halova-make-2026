@@ -1,19 +1,19 @@
 <template>
   <div class="space-y-8 animate-fade-in" data-testid="step4-review">
     <div class="space-y-4">
-      <h2 class="text-2xl font-bold font-display">Krok 4: Zhrnutie</h2>
+      <h2 class="text-2xl font-display font-extrabold">Krok 4: Zhrnutie</h2>
       <p class="text-muted text-sm">Skontrolujte údaje pred odoslaním.</p>
     </div>
 
     <!-- Step 1: Identity Summary -->
-    <div class="border-l-4 border-accent p-6 bg-border/10">
+    <div class="border-l-4 border-accent p-6 bg-surface/45 rounded-r-xl">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-bold text-lg">Identita</h3>
         <button
           type="button"
           @click="editStep(1)"
           data-testid="step4-edit-step1"
-          class="text-sm text-text border border-transparent hover:border-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
+          class="text-sm text-text border border-transparent hover:border-accent hover:text-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
           aria-label="Upraviť Identitu"
         >
           Upraviť
@@ -48,14 +48,14 @@
     </div>
 
     <!-- Step 2: Need Summary -->
-    <div class="border-l-4 border-accent p-6 bg-border/10">
+    <div class="border-l-4 border-accent p-6 bg-surface/45 rounded-r-xl">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-bold text-lg">Požiadavka</h3>
         <button
           type="button"
           @click="editStep(2)"
           data-testid="step4-edit-step2"
-          class="text-sm text-text border border-transparent hover:border-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
+          class="text-sm text-text border border-transparent hover:border-accent hover:text-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
           aria-label="Upraviť Požiadavku"
         >
           Upraviť
@@ -78,14 +78,14 @@
     </div>
 
     <!-- Step 3: Details Summary -->
-    <div class="border-l-4 border-accent p-6 bg-border/10">
+    <div class="border-l-4 border-accent p-6 bg-surface/45 rounded-r-xl">
       <div class="flex items-center justify-between mb-4">
         <h3 class="font-bold text-lg">Detaily</h3>
         <button
           type="button"
           @click="editStep(3)"
           data-testid="step4-edit-step3"
-          class="text-sm text-text border border-transparent hover:border-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
+          class="text-sm text-text border border-transparent hover:border-accent hover:text-text px-2 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg transition-colors"
           aria-label="Upraviť Detaily"
         >
           Upraviť
@@ -114,8 +114,8 @@
             <span
               v-for="tag in store.data.tags"
               :key="tag"
-              class="px-2 py-1 text-xs bg-accent/10 text-accent border border-accent/20 break-all"
-            >
+               class="px-2 py-1 text-xs bg-accent/10 text-text border border-accent/30 rounded-md break-all"
+             >
               {{ tag }}
             </span>
           </dd>

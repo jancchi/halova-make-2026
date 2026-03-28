@@ -1,22 +1,22 @@
 <template>
   <section class="min-h-[60vh] flex items-center justify-center px-6" data-testid="success-screen">
-    <div class="w-full max-w-2xl text-center border-t border-b border-border py-12 md:py-16 animate-fade-in-up">
+    <div class="w-full max-w-2xl text-center border border-border bg-surface/45 rounded-2xl py-12 md:py-16 px-6 animate-fade-in-up shadow-[0_22px_42px_-24px_rgba(0,0,0,0.75)]">
       <p class="text-caps text-xs text-muted mb-3">Žiadosť bola odoslaná</p>
-      <h1 class="text-4xl md:text-5xl font-display leading-tight mb-4">Žiadosť prijatá.</h1>
+      <h1 class="text-4xl md:text-5xl font-display font-extrabold leading-tight mb-4">Žiadosť prijatá.</h1>
       <p class="text-muted text-sm md:text-base max-w-xl mx-auto mb-8">
         Ďakujeme. Naša komunita vašu požiadavku overí a následne zverejní.
       </p>
 
       <div class="border-y border-border py-5 mb-8">
         <p class="text-sm text-muted mb-1">ID žiadosti</p>
-        <p class="font-display text-2xl" data-testid="thankyou-request-id">{{ requestIdDisplay }}</p>
+        <p class="font-display font-bold text-2xl text-text" data-testid="thankyou-request-id">{{ requestIdDisplay }}</p>
       </div>
 
       <p class="text-sm text-muted mb-8">Predpokladaná odpoveď: do 1–3 pracovných dní</p>
 
       <button
         type="button"
-        class="inline-flex items-center justify-center border-2 border-text px-6 py-3 text-sm uppercase tracking-wider hover:bg-text hover:text-bg transition-colors"
+        class="inline-flex items-center justify-center border-2 border-accent bg-accent text-bg px-6 py-3 text-sm uppercase tracking-wider hover:bg-accentAlt hover:border-accentAlt transition-colors"
         data-testid="thankyou-new-request"
         @click="$emit('new-request')"
       >

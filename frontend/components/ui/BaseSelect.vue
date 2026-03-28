@@ -9,13 +9,13 @@
       :disabled="disabled"
       :data-testid="testId"
       :class="[
-        'w-full bg-bg text-text',
-        'border-0 border-b-2 border-border',
-        'focus:border-accent focus:outline-none',
+        'w-full bg-surface/35 text-text',
+        'border border-border rounded-xl',
+        'focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
         'transition-colors duration-200',
         error ? 'border-red-500' : '',
       ]"
-      class="py-2"
+      class="py-3 px-4"
     >
       <option v-if="placeholder" value="" disabled>{{ placeholder }}</option>
       <option v-for="option in options" :key="option.value" :value="option.value">

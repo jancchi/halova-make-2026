@@ -7,13 +7,13 @@
       <span
         v-for="(tag, index) in modelValue"
         :key="index"
-        class="inline-flex items-center px-3 py-1 bg-border text-text text-sm rounded-full"
+        class="inline-flex items-center px-3 py-1 bg-accent/15 text-text text-sm border border-accent/30 rounded-full"
         :data-testid="`tag-${index}`"
       >
         {{ tag }}
         <button
           @click="removeTag(index)"
-          class="ml-2 text-muted hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:rounded"
+          class="ml-2 text-text hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:rounded"
           :data-testid="`tag-remove-${index}`"
           type="button"
           :disabled="disabled"
@@ -30,7 +30,7 @@
       :data-testid="testId"
       :disabled="disabled"
       :class="[
-        'w-full bg-transparent text-text border-0 border-b-2 border-border focus:border-accent focus:outline-none py-2',
+        'w-full bg-surface/35 text-text placeholder:text-muted/75 border border-border rounded-xl focus:border-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg py-3 px-4',
         error ? 'border-red-500' : ''
       ]"
     />

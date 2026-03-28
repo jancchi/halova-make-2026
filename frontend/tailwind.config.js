@@ -10,15 +10,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: '#0A0A0A',
-        text: '#F5F5F0',
-        accent: '#F5F5F0',
-        border: '#2A2A2A',
-        muted: '#8A8A8A',
+        bg: '#FFFFFF',
+        surface: '#F4F6FF',
+        text: '#000000',
+        accent: '#0FEFAA',
+        accentAlt: '#11EDE2',
+        border: '#CACADD',
+        muted: '#000000',
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['DM Sans', 'Syne', 'sans-serif'],
+        display: ['Sora', 'sans-serif'],
+        body: ['Red Hat Text', 'sans-serif'],
       },
     },
   },

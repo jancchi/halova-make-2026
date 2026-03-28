@@ -66,15 +66,15 @@ function handlePrev() {
 
 <template>
   <div data-testid="form-route-shell" class="min-h-screen grid lg:grid-cols-[4fr_6fr] bg-bg text-text">
-    <aside data-testid="form-left-panel" class="hidden lg:flex flex-col sticky top-0 h-screen p-12 border-r border-border bg-bg/50">
+    <aside data-testid="form-left-panel" class="hidden lg:flex flex-col sticky top-0 h-screen pt-24 px-12 pb-12 border-r border-border bg-surface/45 backdrop-blur-sm">
       <div class="mb-auto">
-        <NuxtLink to="/" class="inline-block text-xl font-display mb-12 uppercase tracking-wide">
+        <NuxtLink to="/" class="inline-block text-xl font-display mb-12 uppercase tracking-[0.2em] text-text">
           Halova
         </NuxtLink>
-        <h1 class="text-4xl xl:text-5xl font-display leading-tight mb-6">
+        <h1 class="text-4xl xl:text-5xl font-display font-extrabold leading-tight mb-6">
           Zanechajte <br /> nám vašu <br /> požiadavku.
         </h1>
-        <p class="text-muted text-lg max-w-md">
+        <p class="text-muted text-lg max-w-md font-body">
           Vaša výzva bude po overení zverejnená v sieti Halova. Prosím, poskytnite presné a overiteľné informácie.
         </p>
       </div>
@@ -88,12 +88,15 @@ function handlePrev() {
     </aside>
 
     <main class="flex flex-col min-h-screen">
-      <header class="p-6 md:p-12 border-b border-border sticky top-0 bg-bg z-10 flex items-center gap-6">
-        <NuxtLink to="/" class="lg:hidden text-lg font-display uppercase tracking-wide">
-          Halova
-        </NuxtLink>
-        <div class="flex-1 max-w-sm mx-auto w-full">
-          <StepIndicator :current-step="store.currentStep" :total-steps="store.totalSteps" />
+      <header class="sticky top-0 z-20 h-[60px] border-b border-border bg-bg/90 backdrop-blur-sm flex items-center">
+        <div class="w-full max-w-[1200px] mx-auto px-4 md:px-6 flex items-center gap-4 md:gap-6">
+          <NuxtLink to="/" class="text-sm md:text-base font-display text-caps tracking-[0.08em] text-text shrink-0">
+            Komunita pomáha
+          </NuxtLink>
+
+          <div class="flex-1 min-w-0">
+            <StepIndicator :current-step="store.currentStep" :total-steps="store.totalSteps" />
+          </div>
         </div>
       </header>
 
@@ -112,7 +115,7 @@ function handlePrev() {
           <button
             type="button"
             @click="handlePrev"
-            :class="['px-4 md:px-6 py-3 font-medium transition-colors border border-border text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg', store.currentStep === 1 ? 'opacity-0 pointer-events-none' : 'hover:bg-muted/10 text-text']"
+            :class="['px-4 md:px-6 py-3 font-medium transition-colors border border-border text-sm md:text-base bg-transparent text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg', store.currentStep === 1 ? 'opacity-0 pointer-events-none' : 'hover:bg-surface']"
           >
             Späť
           </button>
@@ -120,7 +123,7 @@ function handlePrev() {
           <button
             type="button"
             @click="handleNext"
-            class="px-6 md:px-8 py-3 bg-text text-bg font-medium hover:bg-muted transition-colors disabled:opacity-50 text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            class="px-6 md:px-8 py-3 bg-accent text-bg font-semibold hover:bg-accentAlt transition-colors disabled:opacity-50 text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             :disabled="store.isSubmitting"
           >
             Pokračovať
@@ -132,8 +135,8 @@ function handlePrev() {
             type="button"
             @click="handleNext"
             :class="[
-              'w-full py-4 border-2 border-text text-text font-bold uppercase tracking-wider transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
-              store.isSubmitting ? 'animate-pulse' : 'hover:bg-text hover:text-bg'
+              'w-full py-4 border-2 border-accent bg-accent text-bg font-bold uppercase tracking-wider transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
+              store.isSubmitting ? 'animate-pulse' : 'hover:bg-accentAlt hover:border-accentAlt'
             ]"
             :disabled="store.isSubmitting"
             data-testid="step4-submit"
@@ -144,7 +147,7 @@ function handlePrev() {
           <button
             type="button"
             @click="handlePrev"
-            class="text-center text-sm font-medium text-muted hover:text-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            class="text-center text-sm font-medium text-text hover:text-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             :disabled="store.isSubmitting"
           >
             Späť
