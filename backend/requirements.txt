@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+pydantic-settings
+qdrant-client
+python-multipart
+black
+isort

@@ -1,0 +1,39 @@
+# ── Environment ──────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+.venv/
+
+# ── Python ───────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# ── Node / Nuxt ──────────────────────────────────────────
+node_modules/
+.nuxt/
+.output/
+.nitro/
+.cache/
+*.log
+
+# ── DB ───────────────────────────────────────────────────
+*.sqlite
+*.db
+qdrant_storage/
+
+# ── OS ───────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
