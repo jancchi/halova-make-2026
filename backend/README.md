@@ -9,8 +9,8 @@ It sends request data to Vertex AI Gemini and returns structured JSON.
 ## Requirements
 
 - Python 3.11+
-- A GCP project with Vertex AI enabled
-- Service account key JSON with Vertex AI access
+- Google Cloud project with Vertex AI enabled
+- Service account JSON credentials
 
 ## Install
 
@@ -32,9 +32,12 @@ pip install -e .
 
 1. In Google Cloud Console, enable **Vertex AI API** for your project.
 2. Create a service account (IAM & Admin -> Service Accounts).
-3. Grant a role with Vertex AI access (for MVP, `Vertex AI User` is sufficient).
-4. Create and download a JSON key for that service account.
-5. Set `GOOGLE_APPLICATION_CREDENTIALS` to the JSON file path.
+3. Grant it a role with Vertex AI access (`Vertex AI User` is sufficient for MVP).
+4. Create and download the service account JSON key.
+5. Put values in `.env`:
+   - `VERTEX_PROJECT_ID=...`
+   - `VERTEX_LOCATION=global`
+   - `GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/key.json`
 
 Copy env file:
 

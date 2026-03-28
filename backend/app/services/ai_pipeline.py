@@ -4,6 +4,9 @@ import logging
 from vertexai.generative_models import GenerationConfig, GenerativeModel
 
 
+MODEL_NAME = "gemini-2.0-flash-001"
+
+
 logger = logging.getLogger(__name__)
 
 
@@ -50,9 +53,7 @@ class AIPipelineError(Exception):
 
 
 def analyze_request(*, company_name: str, web_url: str, description: str) -> dict:
-    model = GenerativeModel(
-        "gemini-2.0-flash-001", system_instruction=SYSTEM_INSTRUCTION
-    )
+    model = GenerativeModel(MODEL_NAME, system_instruction=SYSTEM_INSTRUCTION)
 
     user_message = (
         f"Company: {company_name}\nWebsite: {web_url}\nRequest: {description}"

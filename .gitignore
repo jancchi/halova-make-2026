@@ -5,6 +5,7 @@
 .venv/
 backend/.env
 .sisyphus/
+*.json
 
 # ── Python ───────────────────────────────────────────────
 __pycache__/
