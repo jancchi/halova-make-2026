@@ -12,6 +12,8 @@ export const useFormStore = defineStore('form', {
       // Step 1: Identity
       name: '',
       email: '',
+      organization: '',
+      role: undefined as 'startup' | 'investor' | 'service_provider' | 'member' | undefined,
       phone: '',
       city: '',
       // Step 2: Need
@@ -53,6 +55,8 @@ export const useFormStore = defineStore('form', {
       this.data = {
         name: '',
         email: '',
+        organization: '',
+        role: undefined,
         phone: '',
         city: '',
         category: '',

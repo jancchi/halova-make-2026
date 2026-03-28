@@ -1,0 +1,12 @@
+Testing mapApiError:
+Offline: {
+  message: 'Žiadne internetové pripojenie. Skontrolujte pripojenie a skúste znova.',
+  type: 'error'
+}
+Timeout: {
+  message: 'Požiadavka trvala príliš dlho. Skúste to znova.',
+  type: 'warning'
+}
+400 Error: { message: 'Custom 400 msg', type: 'warning' }
+500 Error: { message: 'Chyba servera. Skúste to neskôr.', type: 'error' }
+Generic: { message: 'Generic fallback error', type: 'error' }

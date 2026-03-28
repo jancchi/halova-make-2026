@@ -3,7 +3,7 @@
     <div
       v-if="visible"
       :data-testid="testId || 'toast-root'"
-      class="fixed top-4 right-4 bg-bg border-2 border-border px-6 py-4 max-w-md z-50"
+      class="bg-bg border-2 border-border px-6 py-4 w-full sm:w-80 md:w-96 shadow-lg pointer-events-auto"
     >
       <div class="flex items-start justify-between">
         <div class="flex-1">

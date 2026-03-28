@@ -16,6 +16,8 @@ export interface RequestPayload {
   // Step 1: Identity
   name: string
   email: string
+  organization?: string
+  role?: 'startup' | 'investor' | 'service_provider' | 'member'
   phone?: string
   city: string
   

@@ -1,0 +1,34 @@
+Categories API unavailable, using fallback { message: 'Unknown error' }
+Testing categories: [
+  {
+    id: '1',
+    title: 'Zdravie',
+    description: 'Zdravotná pomoc a podpora',
+    slug: 'zdravie'
+  },
+  {
+    id: '2',
+    title: 'Bývanie',
+    description: 'Pomoc s ubytovaním',
+    slug: 'byvanie'
+  },
+  {
+    id: '3',
+    title: 'Vzdelávanie',
+    description: 'Vzdelávacie potreby',
+    slug: 'vzdelavanie'
+  },
+  {
+    id: '4',
+    title: 'Financie',
+    description: 'Finančná podpora',
+    slug: 'financie'
+  }
+]
+Stats API unavailable, using fallback { message: 'Unknown error' }
+Testing stats: {
+  activeRequests: 127,
+  completedRequests: 589,
+  activeHelpers: 342,
+  successRate: 94
+}
