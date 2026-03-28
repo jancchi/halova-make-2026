@@ -35,8 +35,8 @@
     <BaseInput
       v-model="budgetString"
       type="number"
-      label="Odhadovaný rozpočet (€) (voliteľné)"
-      placeholder="napr. 50"
+      label="Odhadovaný rozpočet (€)"
+      placeholder="napr. 5000"
       testId="step3-budget"
       :error="errors.budget"
       @update:modelValue="onBudgetChange"
@@ -127,6 +127,15 @@ function onBudgetChange(val: string) {
 defineExpose({
   validate: () => {
     let isValid = true
+
+    errors.value.budget = ''
+
+    const budget = store.data.budget
+    if (budget !== undefined && (Number.isNaN(budget) || budget < 0)) {
+      errors.value.budget = 'Rozpočet nemôže byť záporný.'
+      isValid = false
+    }
+
     if (!localConsent.value) {
       consentError.value = true
       isValid = false

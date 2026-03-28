@@ -33,7 +33,7 @@
           <dd class="text-text font-medium break-words">{{ store.data.organization }}</dd>
         </div>
         <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
-          <dt class="text-muted sm:w-32 shrink-0">Rola:</dt>
+          <dt class="text-muted sm:w-32 shrink-0">Typ žiadateľa:</dt>
           <dd class="text-text font-medium">{{ roleLabel }}</dd>
         </div>
         <div v-if="store.data.phone" class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
@@ -63,7 +63,7 @@
       </div>
       <dl class="space-y-4 sm:space-y-2 text-sm">
         <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
-          <dt class="text-muted sm:w-32 shrink-0">Kategória:</dt>
+          <dt class="text-muted sm:w-32 shrink-0">Oblasť:</dt>
           <dd class="text-text font-medium">{{ categoryTitle }}</dd>
         </div>
         <div class="flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
@@ -144,7 +144,7 @@ const roleLabel = computed(() => {
     startup: 'Startup',
     investor: 'Investor',
     service_provider: 'Poskytovateľ služieb',
-    member: 'Člen'
+    member: 'Člen komunity'
   }
   return store.data.role ? roleMap[store.data.role] : '-'
 })

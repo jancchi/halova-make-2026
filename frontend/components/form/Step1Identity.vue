@@ -31,16 +31,36 @@
     <BaseInput
       v-model="store.data.organization"
       type="text"
-      label="Organizácia (Nepovinné)"
+      label="Organizácia"
       placeholder="napr. Acme s.r.o."
       testId="step1-organization"
       :error="errors.organization"
       @update:modelValue="clearError('organization')"
     />
 
+    <BaseInput
+      v-model="store.data.city"
+      type="text"
+      label="Mesto *"
+      placeholder="napr. Bratislava"
+      testId="step1-city"
+      :error="errors.city"
+      @update:modelValue="clearError('city')"
+    />
+
+    <BaseInput
+      v-model="store.data.phone"
+      type="tel"
+      label="Telefón"
+      placeholder="napr. +421 900 123 456"
+      testId="step1-phone"
+      :error="errors.phone"
+      @update:modelValue="clearError('phone')"
+    />
+
     <!-- Role Pills -->
     <div class="space-y-2" role="radiogroup" aria-labelledby="role-label">
-      <div id="role-label" class="text-caps text-xs text-muted mb-2 block uppercase tracking-widest">Vaša rola *</div>
+      <div id="role-label" class="text-caps text-xs text-muted mb-2 block uppercase tracking-widest">Typ žiadateľa *</div>
       <div class="flex flex-wrap gap-3">
         <button
           v-for="role in roles"
@@ -78,13 +98,15 @@ const roles = [
   { label: 'Startup', value: 'startup' },
   { label: 'Investor', value: 'investor' },
   { label: 'Poskytovateľ služieb', value: 'service_provider' },
-  { label: 'Člen', value: 'member' }
+  { label: 'Člen komunity', value: 'member' }
 ] as const
 
 const errors = ref({
   name: '',
   email: '',
   organization: '',
+  city: '',
+  phone: '',
   role: ''
 })
 
@@ -106,6 +128,8 @@ defineExpose({
     if (fieldErrors.name) errors.value.name = fieldErrors.name
     if (fieldErrors.email) errors.value.email = fieldErrors.email
     if (fieldErrors.organization) errors.value.organization = fieldErrors.organization
+    if (fieldErrors.city) errors.value.city = fieldErrors.city
+    if (fieldErrors.phone) errors.value.phone = fieldErrors.phone
     if (fieldErrors.role) errors.value.role = fieldErrors.role
   }
 })
@@ -117,6 +141,8 @@ function validateLocal() {
   errors.value.name = ''
   errors.value.email = ''
   errors.value.organization = ''
+  errors.value.city = ''
+  errors.value.phone = ''
   errors.value.role = ''
 
   if (!store.data.name?.trim()) {
@@ -134,6 +160,15 @@ function validateLocal() {
 
   if (!store.data.role) {
     errors.value.role = 'Prosím, vyberte rolu'
+    isValid = false
+  }
+
+  const city = (store.data.city || '').trim()
+  if (!city) {
+    errors.value.city = 'Mesto je povinné'
+    isValid = false
+  } else if (city.length < 2) {
+    errors.value.city = 'Zadajte platné mesto'
     isValid = false
   }
 

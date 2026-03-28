@@ -7,7 +7,7 @@ test('API offline fallback scenario', async ({ page, context }) => {
   
   await page.waitForLoadState('networkidle')
   
-  await expect(page.getByText('Zdravie')).toBeVisible({ timeout: 5000 })
+  await expect(page.getByText('Hľadanie zamestnanca')).toBeVisible({ timeout: 5000 })
   await expect(page.getByText('Active Requests')).toBeVisible()
   await expect(page.getByText('127')).toBeVisible()
   

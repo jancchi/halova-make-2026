@@ -3,10 +3,13 @@ import type { Category } from './types'
 import { findFirstAvailableRoute } from './openapi'
 
 const FALLBACK_CATEGORIES: Category[] = [
-  { id: '1', title: 'Zdravie', description: 'Zdravotná pomoc a podpora', slug: 'zdravie' },
-  { id: '2', title: 'Bývanie', description: 'Pomoc s ubytovaním', slug: 'byvanie' },
-  { id: '3', title: 'Vzdelávanie', description: 'Vzdelávacie potreby', slug: 'vzdelavanie' },
-  { id: '4', title: 'Financie', description: 'Finančná podpora', slug: 'financie' },
+  { id: 'employee-search', title: 'Hľadanie zamestnanca', description: 'Hľadanie kolegu, freelancera alebo špecialistu do tímu.', slug: 'hladanie-zamestnanca' },
+  { id: 'investor-search', title: 'Hľadanie investora', description: 'Potrebujete investora, partnera alebo financovanie projektu.', slug: 'hladanie-investora' },
+  { id: 'event-speaking', title: 'Speakovanie na evente', description: 'Máte záujem vystúpiť, prezentovať alebo viesť diskusiu na podujatí.', slug: 'speakovanie-na-evente' },
+  { id: 'social-media-sharing', title: 'Zdieľanie marketingových podkladov', description: 'Potrebujete pomoc so zdieľaním podkladov na sociálnych sieťach.', slug: 'zdielanie-marketingovych-podkladov' },
+  { id: 'sales-support', title: 'Podpora v oblasti sales', description: 'Pomoc s obchodnou stratégiou, outreachom alebo predajným procesom.', slug: 'podpora-v-oblasti-sales' },
+  { id: 'client-search', title: 'Hľadanie klientov', description: 'Potrebujete osloviť nových klientov a získať dopyt.', slug: 'hladanie-klientov' },
+  { id: 'other', title: 'Iné', description: 'Iný typ požiadavky, ktorý nespĺňa vyššie uvedené oblasti.', slug: 'ine' },
 ]
 
 const CATEGORIES_ROUTES = ['/api/v1/categories']

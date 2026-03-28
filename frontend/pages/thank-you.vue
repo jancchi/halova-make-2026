@@ -19,6 +19,6 @@ const requestId = computed(() => {
 
 async function handleNewRequest() {
   formStore.resetForm()
-  await navigateTo('/form')
+  await navigateTo('/')
 }
 </script>
