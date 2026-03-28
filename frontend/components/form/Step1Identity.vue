@@ -34,20 +34,24 @@
       label="Organizácia (Nepovinné)"
       placeholder="napr. Acme s.r.o."
       testId="step1-organization"
+      :error="errors.organization"
+      @update:modelValue="clearError('organization')"
     />
 
     <!-- Role Pills -->
-    <div class="space-y-2">
-      <label class="text-caps text-xs text-muted mb-2 block uppercase tracking-widest">Vaša rola *</label>
+    <div class="space-y-2" role="radiogroup" aria-labelledby="role-label">
+      <div id="role-label" class="text-caps text-xs text-muted mb-2 block uppercase tracking-widest">Vaša rola *</div>
       <div class="flex flex-wrap gap-3">
         <button
           v-for="role in roles"
           :key="role.value"
           type="button"
+          role="radio"
+          :aria-checked="store.data.role === role.value"
           @click="selectRole(role.value)"
           :data-testid="`step1-role-${role.value}`"
           :class="[
-            'px-4 py-2 border text-sm font-medium transition-colors duration-200 focus:outline-none',
+            'px-4 py-2 border text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2',
             store.data.role === role.value
               ? 'bg-text text-bg border-text'
               : 'bg-transparent text-text border-border hover:border-text'
@@ -80,6 +84,7 @@ const roles = [
 const errors = ref({
   name: '',
   email: '',
+  organization: '',
   role: ''
 })
 
@@ -96,6 +101,12 @@ function selectRole(roleValue: typeof roles[number]['value']) {
 defineExpose({
   validate: () => {
     return validateLocal()
+  },
+  setServerErrors: (fieldErrors: Record<string, string>) => {
+    if (fieldErrors.name) errors.value.name = fieldErrors.name
+    if (fieldErrors.email) errors.value.email = fieldErrors.email
+    if (fieldErrors.organization) errors.value.organization = fieldErrors.organization
+    if (fieldErrors.role) errors.value.role = fieldErrors.role
   }
 })
 
@@ -105,6 +116,7 @@ function validateLocal() {
 
   errors.value.name = ''
   errors.value.email = ''
+  errors.value.organization = ''
   errors.value.role = ''
 
   if (!store.data.name?.trim()) {

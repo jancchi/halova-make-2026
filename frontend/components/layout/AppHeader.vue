@@ -7,7 +7,7 @@
       <nav class="desktop-nav text-caps" aria-label="Desktop Navigation">
         <NuxtLink to="/" data-testid="nav-link-home">Domov</NuxtLink>
         <NuxtLink to="/about" data-testid="nav-link-about">O nás</NuxtLink>
-        <NuxtLink to="/requests" data-testid="nav-link-requests">Žiadosti</NuxtLink>
+        <NuxtLink to="/form" data-testid="nav-link-requests">Žiadosti</NuxtLink>
         <NuxtLink to="/contact" data-testid="nav-link-contact">Kontakt</NuxtLink>
       </nav>
 
@@ -34,7 +34,7 @@
       <nav class="mobile-nav" aria-label="Mobile Navigation">
         <NuxtLink to="/" data-testid="nav-link-home-mobile">Domov</NuxtLink>
         <NuxtLink to="/about" data-testid="nav-link-about-mobile">O nás</NuxtLink>
-        <NuxtLink to="/requests" data-testid="nav-link-requests-mobile">Žiadosti</NuxtLink>
+        <NuxtLink to="/form" data-testid="nav-link-requests-mobile">Žiadosti</NuxtLink>
         <NuxtLink to="/contact" data-testid="nav-link-contact-mobile">Kontakt</NuxtLink>
       </nav>
     </div>

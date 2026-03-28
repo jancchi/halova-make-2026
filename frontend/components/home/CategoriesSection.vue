@@ -54,10 +54,10 @@ onMounted(() => {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .category-row {
+  .category-row, .category-row:hover {
     animation: none;
     opacity: 1;
-    transform: none;
+    transform: none !important;
     transition: none;
   }
 }

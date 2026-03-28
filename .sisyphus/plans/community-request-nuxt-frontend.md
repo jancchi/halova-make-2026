@@ -1234,7 +1234,7 @@ Wave FINAL (parallel audits, then user approval)
 
   **Commit**: NO (groups with T13-T15, T17-T18)
 
-- [ ] 17. Step 4 Review + submit orchestration
+- [x] 17. Step 4 Review + submit orchestration
 
   **What to do**:
   - Build `components/form/Step4Review.vue` rendering grouped summary blocks for steps 1–3 with “Upraviť” actions.
@@ -1302,7 +1302,7 @@ Wave FINAL (parallel audits, then user approval)
 
   **Commit**: NO (groups with T13-T16, T18)
 
-- [ ] 18. Success screen + thank-you route + new-request reset loop
+- [x] 18. Success screen + thank-you route + new-request reset loop
 
   **What to do**:
   - Implement `components/form/SuccessScreen.vue` and `pages/thank-you.vue` (or equivalent) with centered editorial layout.
@@ -1370,7 +1370,7 @@ Wave FINAL (parallel audits, then user approval)
   - Files: `frontend/pages/request.vue`, `frontend/pages/thank-you.vue`, `frontend/components/form/**`, `frontend/stores/formStore.ts`, `frontend/composables/useRequestForm.ts`
   - Pre-commit: `cd frontend && npm run lint && npm run build`
 
-- [ ] 19. Responsive tuning pass for typography, spacing, and controls
+- [x] 19. Responsive tuning pass for typography, spacing, and controls
 
   **What to do**:
   - Tune typographic scale and spacing across home/form/thank-you views for desktop/tablet/mobile.
@@ -1430,7 +1430,7 @@ Wave FINAL (parallel audits, then user approval)
 
   **Commit**: NO (groups with T20-T22)
 
-- [ ] 20. Accessibility and motion-safety hardening
+- [x] 20. Accessibility and motion-safety hardening
 
   **What to do**:
   - Add semantic labels/aria attributes, keyboard focus states, and tab order consistency.
@@ -1491,7 +1491,7 @@ Wave FINAL (parallel audits, then user approval)
 
   **Commit**: NO (groups with T19, T21-T22)
 
-- [ ] 21. Failure-mode hardening (offline, timeout, 422)
+- [x] 21. Failure-mode hardening (offline, timeout, 422)
 
   **What to do**:
   - Validate and harden all failure channels across home and form submit:
@@ -1558,7 +1558,7 @@ Wave FINAL (parallel audits, then user approval)
 
   **Commit**: NO (groups with T19, T20, T22)
 
-- [ ] 22. Final integration polish + commands verification + frontend docs note
+- [x] 22. Final integration polish + commands verification + frontend docs note
 
   **What to do**:
   - Run final pass to align naming, route links, and visual consistency across all pages.

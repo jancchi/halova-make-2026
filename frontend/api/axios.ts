@@ -38,6 +38,12 @@ apiClient.interceptors.response.use(
     if (error.response) {
       normalized.status = error.response.status
       normalized.message = error.response.data?.message || error.message
+      
+      // Capture 422 validation errors with field details
+      if (error.response.status === 422) {
+        normalized.validationErrors = error.response.data?.detail || []
+        normalized.message = 'Overenie údajov zlyhalo'
+      }
     }
     
     return Promise.reject(normalized)

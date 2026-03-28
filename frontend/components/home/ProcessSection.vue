@@ -19,7 +19,7 @@ const steps = [
       <div 
         v-for="(step, index) in steps" 
         :key="step.number"
-        class="p-10 md:p-16 border-border flex flex-col md:flex-row gap-6 md:gap-10 items-start border-b"
+        class="p-6 sm:p-10 md:p-16 border-border flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-10 items-start border-b"
         :class="[
           index % 2 === 0 ? 'md:border-r' : '',
           index >= 2 ? 'md:border-b-0' : '',

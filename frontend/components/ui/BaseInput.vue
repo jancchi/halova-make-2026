@@ -13,7 +13,7 @@
       :class="[
         'w-full bg-transparent text-text',
         'border-0 border-b-2 border-border',
-        'focus:border-accent focus:outline-none',
+        'focus:border-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
         'transition-colors duration-200',
         error ? 'border-red-500' : '',
       ]"

@@ -16,6 +16,8 @@
           { label: 'Stredná - do niekoľkých týždňov', value: 'medium' },
           { label: 'Vysoká - čo najskôr', value: 'high' }
         ]"
+        :error="errors.urgency"
+        @update:modelValue="clearError('urgency')"
       />
     </div>
 
@@ -25,6 +27,8 @@
       type="date"
       label="Termín (voliteľné)"
       testId="step3-deadline"
+      :error="errors.deadline"
+      @update:modelValue="clearError('deadline')"
     />
 
     <!-- Budget -->
@@ -34,6 +38,7 @@
       label="Odhadovaný rozpočet (€) (voliteľné)"
       placeholder="napr. 50"
       testId="step3-budget"
+      :error="errors.budget"
       @update:modelValue="onBudgetChange"
     />
 
@@ -49,6 +54,8 @@
           { label: 'Materiál/vybavenie', value: 'material' },
           { label: 'Iné', value: 'other' }
         ]"
+        :error="errors.helpType"
+        @update:modelValue="clearError('helpType')"
       />
     </div>
 
@@ -58,6 +65,8 @@
       label="Štítky (Stlačte Enter pre pridanie)"
       placeholder="napr. doprava, ťažká práca"
       testId="step3-tags"
+      :error="errors.tags"
+      @update:modelValue="clearError('tags')"
     />
 
     <hr class="border-border my-6" />
@@ -68,7 +77,7 @@
         type="checkbox"
         id="consent"
         v-model="localConsent"
-        class="mt-1 w-4 h-4 accent-accent bg-transparent border-border focus:ring-accent cursor-pointer"
+        class="mt-1 w-4 h-4 accent-text bg-transparent border-border focus:ring-2 focus:ring-text focus:outline-none cursor-pointer"
       />
       <label for="consent" class="text-sm text-text cursor-pointer">
         Potvrdzujem, že poskytnuté informácie sú presné a súhlasím s podmienkami používania platformy. *
@@ -90,16 +99,29 @@ const store = useFormStore()
 
 const budgetString = ref(store.data.budget !== undefined ? String(store.data.budget) : '')
 
+const localConsent = ref(false)
+const consentError = ref(false)
+
+const errors = ref({
+  urgency: '',
+  deadline: '',
+  budget: '',
+  helpType: '',
+  tags: ''
+})
+
+function clearError(field: keyof typeof errors.value) {
+  errors.value[field] = ''
+}
+
 function onBudgetChange(val: string) {
+  clearError('budget')
   if (val === '') {
     store.data.budget = undefined
   } else {
     store.data.budget = Number(val)
   }
 }
-
-const localConsent = ref(false)
-const consentError = ref(false)
 
 // Optional: Provide a validate method for parent component to call
 defineExpose({
@@ -112,6 +134,13 @@ defineExpose({
       consentError.value = false
     }
     return isValid
+  },
+  setServerErrors: (fieldErrors: Record<string, string>) => {
+    if (fieldErrors.urgency) errors.value.urgency = fieldErrors.urgency
+    if (fieldErrors.deadline) errors.value.deadline = fieldErrors.deadline
+    if (fieldErrors.budget) errors.value.budget = fieldErrors.budget
+    if (fieldErrors.helpType) errors.value.helpType = fieldErrors.helpType
+    if (fieldErrors.tags) errors.value.tags = fieldErrors.tags
   }
 })
 

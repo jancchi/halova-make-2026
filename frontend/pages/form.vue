@@ -1,33 +1,25 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, nextTick } from 'vue'
 import { useFormStore } from '~/stores/formStore'
 import StepIndicator from '~/components/form/StepIndicator.vue'
 import Step1Identity from '~/components/form/Step1Identity.vue'
 import Step2Need from '~/components/form/Step2Need.vue'
 import Step3Details from '~/components/form/Step3Details.vue'
+import Step4Review from '~/components/form/Step4Review.vue'
+import { useToast } from '~/composables/useToast'
+import { mapApiError } from '~/utils/errorMessages'
+import { useRouter } from 'vue-router'
 
 const store = useFormStore()
 const stepRef = ref<any>(null)
+const { addToast } = useToast()
+const router = useRouter()
 
 const components = [
   Step1Identity,
   Step2Need,
   Step3Details,
-  // Placeholder for step 4 since it's missing but store has totalSteps: 4
-  {
-    template: `
-      <div>
-        <h2 class="text-2xl font-display mb-4">Zhrnutie</h2>
-        <p class="text-muted mb-8">Skontrolujte a odošlite vašu požiadavku.</p>
-        <div class="p-6 border border-border">
-          <p class="font-bold mb-2">Pripravené na odoslanie.</p>
-        </div>
-      </div>
-    `,
-    setup() {
-      return { validate: () => true }
-    }
-  }
+  Step4Review
 ]
 
 const currentComponent = computed(() => {
@@ -44,13 +36,29 @@ function handleNext() {
   if (store.currentStep < store.totalSteps) {
     store.nextStep()
   } else {
-    // submit
-    store.submitForm().then(() => {
-      // success handling would go here
-    }).catch(e => {
-      console.error(e)
-    })
+    submitForm()
   }
+}
+
+function submitForm() {
+  store.submitForm().then((response) => {
+    router.push({ path: '/thank-you', query: { id: response.id } })
+  }).catch(error => {
+    const mapped = mapApiError(error)
+    
+    if (mapped.fieldErrors && mapped.affectedStep) {
+      store.goToStep(mapped.affectedStep)
+      
+      nextTick(() => {
+        if (stepRef.value?.setServerErrors) {
+          stepRef.value.setServerErrors(mapped.fieldErrors)
+        }
+      })
+    }
+    
+    const retryCallback = (error.isOffline || error.isTimeout) ? submitForm : undefined
+    addToast(mapped.message, mapped.type, retryCallback)
+  })
 }
 
 function handlePrev() {
@@ -108,11 +116,11 @@ function handlePrev() {
         </Transition>
 
         <!-- Navigation -->
-        <div class="mt-auto pt-12 border-t border-border flex items-center justify-between">
+        <div v-if="store.currentStep < store.totalSteps" class="mt-auto pt-12 border-t border-border flex items-center justify-between gap-4">
           <button 
             type="button"
             @click="handlePrev"
-            :class="['px-6 py-3 font-medium transition-colors border border-border', store.currentStep === 1 ? 'opacity-0 pointer-events-none' : 'hover:bg-muted/10 text-text']"
+            :class="['px-4 md:px-6 py-3 font-medium transition-colors border border-border text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg', store.currentStep === 1 ? 'opacity-0 pointer-events-none' : 'hover:bg-muted/10 text-text']"
           >
             Späť
           </button>
@@ -120,10 +128,34 @@ function handlePrev() {
           <button 
             type="button"
             @click="handleNext"
-            class="px-8 py-3 bg-text text-bg font-medium hover:bg-muted transition-colors disabled:opacity-50"
+            class="px-6 md:px-8 py-3 bg-text text-bg font-medium hover:bg-muted transition-colors disabled:opacity-50 text-sm md:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
             :disabled="store.isSubmitting"
           >
-            {{ store.currentStep === store.totalSteps ? 'Odoslať' : 'Pokračovať' }}
+            Pokračovať
+          </button>
+        </div>
+
+        <div v-else class="mt-auto pt-12 border-t border-border flex flex-col gap-4">
+          <button 
+            type="button"
+            @click="handleNext"
+            :class="[
+              'w-full py-4 border-2 border-text text-text font-bold uppercase tracking-wider transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
+              store.isSubmitting ? 'animate-pulse' : 'hover:bg-text hover:text-bg'
+            ]"
+            :disabled="store.isSubmitting"
+            data-testid="step4-submit"
+          >
+            {{ store.isSubmitting ? 'Odosielam...' : 'Odoslať' }}
+          </button>
+          
+          <button 
+            type="button"
+            @click="handlePrev"
+            class="text-center text-sm font-medium text-muted hover:text-text transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            :disabled="store.isSubmitting"
+          >
+            Späť
           </button>
         </div>
       </div>
@@ -135,6 +167,17 @@ function handlePrev() {
 .step-enter-active,
 .step-leave-active {
   transition: all 300ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-enter-active,
+  .step-leave-active {
+    transition-duration: 0.01ms !important;
+  }
+  .step-enter-from,
+  .step-leave-to {
+    transform: none;
+  }
 }
 
 .step-enter-from {

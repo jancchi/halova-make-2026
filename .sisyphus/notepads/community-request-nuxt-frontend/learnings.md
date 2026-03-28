@@ -254,3 +254,16 @@ frontend/
 - Deleted temporary testing route, keeping logic safely encapsulated behind the standard `defineExpose({ validate })` so orchestrator form routes function out-of-the-box.
 - Refactored `Step3Details.vue` copy to Slovak to ensure localization consistency across the form.
 - Removed unused `onMounted` import during cleanup.
+
+### T19: Responsive Tuning Pass
+- **Responsive Navigation Buttons:** Replaced fixed large padding (`px-6`, `px-8`) on form navigation buttons with responsive variants (`px-4 md:px-8`, `text-sm md:text-base`) to prevent button group from overflowing very narrow screens (e.g. 320px width). Wrapped items with gaps correctly.
+- **Break-words in Layouts:** Review screens inside `<dl>` lists could overflow due to long single-string inputs like email addresses. Replaced static `<div class="flex">` rows with responsive stacking (`flex-col sm:flex-row gap-1 sm:gap-0`) and applied `break-words` and `break-all` on dynamically injected form data.
+- **Responsive Typography in Grid Constraints:** Stats cards were previously using `text-5xl md:text-6xl`, causing potential overflow for 4-column-to-2-column grid scaling on mobile. Added tighter mobile constraints (`text-4xl sm:text-5xl`) and adjusted padding (`p-4 sm:p-8`) to prevent squashing and horizontal scrolling.
+- **Hero Title Scaling:** Scaled down `text-5xl` to `text-4xl sm:text-5xl` for the main hero headline to fit small mobile viewports easily.
+
+## Task 20: Accessibility and Motion-Safety Hardening
+- Replaced raw tailwind `focus:outline-none` with `focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2` across standard UI controls for better keyboard navigability.
+- Applied `<fieldset>` and `<legend>` for structural components like radio groups instead of `<label>` wraps.
+- Verified and enforced `prefers-reduced-motion: reduce` on Vue `<Transition>` elements and heavy staggered CSS animations.
+- Handled offline, timeout, and 422 errors via axios interceptors and Pinia state preservation. Used  to reliably set step-specific field errors post-navigation.
+- Handled offline, timeout, and 422 errors via axios interceptors and Pinia state preservation. Used `nextTick` to reliably set step-specific field errors post-navigation.

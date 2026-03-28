@@ -1,8 +1,8 @@
 <template>
-  <div class="radio-group">
-    <label v-if="label" class="text-caps text-xs text-muted mb-2 block">
+  <fieldset class="radio-group">
+    <legend v-if="label" class="text-caps text-xs text-muted mb-2 block w-full">
       {{ label }}
-    </label>
+    </legend>
     <div class="space-y-2">
       <label
         v-for="option in options"
@@ -16,13 +16,13 @@
           :checked="modelValue === option.value"
           @change="$emit('update:modelValue', option.value)"
           :disabled="disabled"
-          class="w-4 h-4 accent-accent bg-transparent border-border focus:ring-accent"
+          class="w-4 h-4 accent-text bg-transparent border-border focus:ring-2 focus:ring-text focus:outline-none"
         />
         <span class="text-text" :class="{ 'opacity-50': disabled }">{{ option.label }}</span>
       </label>
     </div>
     <p v-if="error" class="text-red-500 text-sm mt-1">{{ error }}</p>
-  </div>
+  </fieldset>
 </template>
 
 <script setup lang="ts">

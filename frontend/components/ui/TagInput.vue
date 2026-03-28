@@ -13,10 +13,11 @@
         {{ tag }}
         <button
           @click="removeTag(index)"
-          class="ml-2 text-muted hover:text-text focus:outline-none"
+          class="ml-2 text-muted hover:text-text focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:rounded"
           :data-testid="`tag-remove-${index}`"
           type="button"
           :disabled="disabled"
+          :aria-label="`Odstrániť štítok ${tag}`"
         >
           &times;
         </button>

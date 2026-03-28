@@ -7,7 +7,7 @@
     <div class="max-w-4xl mx-auto flex flex-col items-center gap-8">
       
       <!-- Headline -->
-      <h1 class="hero-reveal hero-reveal-1 font-display text-5xl md:text-7xl lg:text-8xl tracking-tight text-text leading-tight">
+      <h1 class="hero-reveal hero-reveal-1 font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight text-text leading-tight">
         Komunita, ktorá <br class="hidden md:block" /> sa snaží
       </h1>
       

@@ -1,8 +1,8 @@
 <template>
   <div class="step-2-need flex flex-col space-y-8">
     <!-- Category Selection -->
-    <div class="category-selection">
-      <label class="text-caps text-xs text-muted mb-2 block">Kategória</label>
+    <div class="category-selection" role="radiogroup" aria-labelledby="category-label">
+      <div id="category-label" class="text-caps text-xs text-muted mb-2 block">Kategória</div>
       <div v-if="requestStore.categories.loading" class="text-sm text-muted">
         Načítavam kategórie...
       </div>
@@ -11,10 +11,12 @@
           v-for="cat in requestStore.categories.data"
           :key="cat.id"
           type="button"
+          role="radio"
+          :aria-checked="formStore.data.category === cat.id"
           @click="selectCategory(cat.id)"
           :data-testid="'step2-category-row-' + cat.slug"
           :class="[
-            'text-left px-4 py-4 border-l-4 transition-colors border-b border-border last:border-b-0',
+            'text-left px-4 py-4 border-l-4 transition-colors border-b border-border last:border-b-0 focus-visible:ring-2 focus-visible:ring-text focus-visible:outline-none',
             formStore.data.category === cat.id
               ? 'border-l-accent bg-border/20 text-accent'
               : 'border-l-transparent hover:bg-border/10 text-text'
@@ -143,7 +145,12 @@ const validate = () => {
 }
 
 defineExpose({
-  validate
+  validate,
+  setServerErrors: (fieldErrors: Record<string, string>) => {
+    if (fieldErrors.category) errors.value.category = fieldErrors.category
+    if (fieldErrors.title) errors.value.title = fieldErrors.title
+    if (fieldErrors.description) errors.value.description = fieldErrors.description
+  }
 })
 </script>
 
