@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getAuthToken } from './token'
 
 const getBaseURL = (): string => {
   if (typeof window === 'undefined') {
@@ -18,6 +19,17 @@ const apiClient = axios.create({
   headers: {
     'Content-Type': 'application/json',
   },
+})
+
+apiClient.interceptors.request.use((config) => {
+  const token = getAuthToken()
+
+  if (token) {
+    config.headers = config.headers ?? {}
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  return config
 })
 
 apiClient.interceptors.response.use(

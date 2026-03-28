@@ -39,3 +39,27 @@ export interface RequestResponse {
   status: string
   createdAt: string
 }
+
+export interface BackendPingResponse {
+  pong: boolean
+}
+
+export interface RegisterPayload {
+  email: string
+  password: string
+}
+
+export interface User {
+  id: number
+  email: string
+}
+
+export interface LoginPayload {
+  email: string
+  password: string
+}
+
+export interface AuthTokenResponse {
+  access_token: string
+  token_type: string
+}
