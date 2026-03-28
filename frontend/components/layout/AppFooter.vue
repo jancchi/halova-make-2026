@@ -2,7 +2,7 @@
   <footer class="app-footer" data-testid="app-footer">
     <div class="footer-content">
       <div class="copyright text-body">
-        &copy; 2026 Komunita pomáha
+      &copy; 2026 0100 Komunita pomáha
       </div>
       <div class="footer-links text-body">
         <NuxtLink to="/about">O projekte</NuxtLink>

@@ -1,7 +1,7 @@
 <template>
   <header class="app-header" data-testid="app-header">
     <div class="header-container">
-      <NuxtLink to="/" class="logo text-display text-caps">Komunita pomáha</NuxtLink>
+  <NuxtLink to="/" class="logo text-display text-caps">0100 Komunita pomáha</NuxtLink>
 
       <!-- Desktop Nav -->
       <nav class="desktop-nav text-caps" aria-label="Desktop Navigation">
@@ -68,6 +68,20 @@ watch(route, () => {
   z-index: 50;
   display: flex;
   align-items: center;
+  animation: header-accent-pulse 8s ease-in-out infinite;
+}
+
+@keyframes header-accent-pulse {
+  0%,
+  100% {
+    border-bottom-color: var(--color-border);
+    box-shadow: 0 1px 0 rgba(15, 239, 170, 0);
+  }
+
+  50% {
+    border-bottom-color: rgba(15, 239, 170, 0.42);
+    box-shadow: 0 2px 14px -10px rgba(15, 239, 170, 0.28);
+  }
 }
 
 .header-container {
@@ -188,6 +202,12 @@ watch(route, () => {
   }
   .mobile-nav-panel {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header {
+    animation: none;
   }
 }
 </style>
