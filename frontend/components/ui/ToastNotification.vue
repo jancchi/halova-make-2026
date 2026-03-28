@@ -3,7 +3,7 @@
     <div
       v-if="visible"
       :data-testid="testId || 'toast-root'"
-      class="bg-bg border-2 border-border px-6 py-4 w-full sm:w-80 md:w-96 shadow-lg pointer-events-auto"
+      class="bg-surface border border-border rounded-2xl px-6 py-4 w-full sm:w-80 md:w-96 shadow-lg pointer-events-auto"
     >
       <div class="flex items-start justify-between">
         <div class="flex-1">
@@ -11,7 +11,7 @@
           <button
             v-if="retryCallback"
             @click="retryCallback"
-            class="text-accent underline text-sm mt-2 focus:outline-none"
+            class="text-text underline text-sm mt-2 focus:outline-none hover:text-text"
           >
             Retry
           </button>

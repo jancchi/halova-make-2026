@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-8 animate-fade-in" data-testid="step1-container">
     <div class="space-y-4">
-      <h2 class="text-2xl font-bold font-display">Krok 1: Identita</h2>
+      <h2 class="text-2xl font-display font-extrabold">Krok 1: Identita</h2>
       <p class="text-muted text-sm">Povedzte nám, kto ste.</p>
     </div>
 
@@ -71,10 +71,10 @@
           @click="selectRole(role.value)"
           :data-testid="`step1-role-${role.value}`"
           :class="[
-            'px-4 py-2 border text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-text focus-visible:ring-offset-2',
+            'px-4 py-2 border text-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accentAlt focus-visible:ring-offset-2 focus-visible:ring-offset-bg',
             store.data.role === role.value
-              ? 'bg-text text-bg border-text'
-              : 'bg-transparent text-text border-border hover:border-text'
+              ? 'bg-accent text-bg border-accent'
+              : 'bg-transparent text-text border-border hover:border-accent hover:text-text'
           ]"
         >
           {{ role.label }}

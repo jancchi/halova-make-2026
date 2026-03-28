@@ -61,7 +61,7 @@ watch(route, () => {
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(10, 10, 10, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -96,12 +96,13 @@ watch(route, () => {
   font-weight: 500;
   font-size: 0.875rem;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .desktop-nav a:hover,
 .desktop-nav a.router-link-active {
-  opacity: 0.7;
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 .mobile-toggle {
@@ -111,9 +112,10 @@ watch(route, () => {
   width: 24px;
   height: 24px;
   background: transparent;
-  border: none;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
   cursor: pointer;
-  padding: 0;
+  padding: 0.15rem;
   z-index: 51;
 }
 
@@ -141,7 +143,7 @@ watch(route, () => {
   top: 60px;
   left: 0;
   width: 100%;
-  background: var(--color-bg);
+  background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid var(--color-border);
   transform: translateY(-100%);
   opacity: 0;
@@ -167,12 +169,13 @@ watch(route, () => {
   font-size: 1.25rem;
   font-weight: 500;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .mobile-nav a:hover,
 .mobile-nav a.router-link-active {
-  opacity: 0.7;
+  color: var(--color-accent);
+  opacity: 1;
 }
 
 /* Tablet / Desktop */

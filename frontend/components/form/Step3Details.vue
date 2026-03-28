@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-8 animate-fade-in" data-testid="step3-container">
     <div class="space-y-4">
-      <h2 class="text-2xl font-bold font-display">Krok 3: Detaily</h2>
+      <h2 class="text-2xl font-display font-extrabold">Krok 3: Detaily</h2>
       <p class="text-muted text-sm">Poskytnite ďalšie detaily, ktoré nám pomôžu vybaviť vašu požiadavku.</p>
     </div>
 
@@ -77,7 +77,7 @@
         type="checkbox"
         id="consent"
         v-model="localConsent"
-        class="mt-1 w-4 h-4 accent-text bg-transparent border-border focus:ring-2 focus:ring-text focus:outline-none cursor-pointer"
+        class="mt-1 w-4 h-4 accent-accent bg-transparent border-border focus:ring-2 focus:ring-accentAlt focus:outline-none cursor-pointer"
       />
       <label for="consent" class="text-sm text-text cursor-pointer">
         Potvrdzujem, že poskytnuté informácie sú presné a súhlasím s podmienkami používania platformy. *
