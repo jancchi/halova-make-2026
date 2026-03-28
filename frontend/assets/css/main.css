@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0A0A0A;        /* Deep black background */
+  --color-text: #F5F5F0;      /* Warm off-white text */
+  --color-accent: #F5F5F0;    /* Accent = text for minimal palette */
+  --color-border: #2A2A2A;    /* Subtle divider */
+  --color-muted: #8A8A8A;     /* Secondary text */
+  
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+  
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'DM Sans', 'Syne', sans-serif;
+  
+  --border-radius-sharp: 2px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.text-display { font-family: var(--font-display); }
+.text-body { font-family: var(--font-body); }
+.text-caps { text-transform: uppercase; letter-spacing: 0.05em; }
+
+button, input, textarea, select {
+  border-radius: var(--border-radius-sharp);
+  transition: all 0.2s ease;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
