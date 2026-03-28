@@ -107,4 +107,7 @@ make clean      # remove __pycache__, .nuxt, .output
 ```python
 from app.qdrant_client import ensure_collection
 ensure_collection("my_vectors", vector_size=768)  # call in startup
+
+
+btw bol tu timo
 ```
