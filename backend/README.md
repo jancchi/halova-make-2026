@@ -1,16 +1,13 @@
-# FastAPI Vertex AI MVP
+# FastAPI Vertex AI Request Backend
 
-Minimal backend-only MVP with a single endpoint:
-
-- `POST /api/requests`
-
-It sends request data to Vertex AI Gemini and returns structured JSON.
+Backend for client request intake + admin dashboard APIs with Vertex AI analysis.
 
 ## Requirements
 
 - Python 3.11+
 - Google Cloud project with Vertex AI enabled
 - Service account JSON credentials
+- SQLite or PostgreSQL database URL
 
 ## Install
 
@@ -35,6 +32,8 @@ pip install -e .
 3. Grant it a role with Vertex AI access (`Vertex AI User` is sufficient for MVP).
 4. Create and download the service account JSON key.
 5. Put values in `.env`:
+   - `DATABASE_URL=sqlite:///./requests.db`
+   - `CORS_ORIGINS=["http://localhost:3000"]`
    - `VERTEX_PROJECT_ID=...`
    - `VERTEX_LOCATION=global`
    - `GOOGLE_APPLICATION_CREDENTIALS=/absolute/path/to/key.json`
@@ -60,20 +59,41 @@ Server will start on `http://127.0.0.1:8000`.
 curl -X POST "http://127.0.0.1:8000/api/requests" \
   -H "Content-Type: application/json" \
   -d '{
-    "company_name": "Acme Labs",
-    "web_url": "https://acme.example",
-    "description": "We need warm intros to seed investors in climate fintech in the next 3 weeks."
+    "name": "Jozef Mak",
+    "email": "jozef@example.com",
+    "organization": "Acme Labs",
+    "role": "startup",
+    "phone": "+421900123456",
+    "city": "Bratislava",
+    "category": "investor-search",
+    "title": "Hladam investora na pre-seed",
+    "description": "Potrebujeme uvod k investorom v CEE, runway mame na 4 mesiace a chceme closnut kolo do 6 tyzdnov.",
+    "urgency": "high",
+    "deadline": "2026-05-01",
+    "budget": 0,
+    "helpType": "financial",
+    "tags": ["fundraising", "fintech", "pre-seed"]
   }'
 ```
 
-Expected response shape:
+Expected submit response:
 
 ```json
 {
-  "category": "INVESTOR_INTRO",
-  "priority_score": 8,
-  "priority_reasoning": "Fundraising request with near-term timeline and clear target profile.",
-  "summary": "Acme Labs seeks seed-stage investor introductions in climate fintech within three weeks.",
-  "required_member_roles": ["INVESTOR", "ECOSYSTEM_PARTNER"]
+  "id": "1",
+  "status": "OPEN",
+  "createdAt": "2026-03-28T15:30:00Z"
 }
 ```
+
+## API overview
+
+- `GET /health`
+- `GET /api/ping`
+- `GET /api/categories`
+- `GET /api/stats`
+- `POST /api/requests`
+- `GET /api/requests/{id}`
+- `GET /api/admin/requests/top-urgent?limit=10`
+- `GET /api/admin/requests?category=&status=&urgency_min=&urgency_max=&q=&limit=&offset=`
+- `PATCH /api/admin/requests/{id}`
