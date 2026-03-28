@@ -1,0 +1,12 @@
+Task 20: Accessibility and motion-safety hardening
+
+Checks completed:
+- Global `prefers-reduced-motion` added for components/transitions in `main.css`.
+- Global `:focus-visible` added for interactive controls (`button`, `input`, `textarea`, `select`, `a`) in `main.css`.
+- Focus states upgraded in reusable UI components (`BaseInput.vue`, `BaseTextarea.vue`, `RadioGroup.vue`, `TagInput.vue`) by adding explicit `focus-visible:ring-2 focus-visible:ring-text` instead of just removing outline.
+- Enhanced semantic HTML in `RadioGroup.vue` by switching from nested labels to `<fieldset>` and `<legend>`.
+- Enhanced ARIA labels and grouping in `Step1Identity.vue` and `Step2Need.vue` (added `role="radiogroup"`, `role="radio"`, `aria-labelledby`, and `aria-checked`).
+- Fixed disabled motion preferences in transition wrappers for steps inside `pages/form.vue` to ensure they are fully bypassed.
+- Handled motion disablement correctly inside `HeroSection.vue` and `CategoriesSection.vue`.
+- Added missing explicit ARIA labels on "Upraviť" (Edit) buttons in `Step4Review.vue`.
+- Build verified with no runtime or type errors.

@@ -1,0 +1,10 @@
+Task 21: Failure-mode hardening (offline, timeout, 422) completed successfully.
+- Files modified: frontend/components/form/Step1Identity.vue, frontend/components/form/Step3Details.vue
+- Offline and timeout failures are correctly categorized in axios.ts and mapped to user-friendly messages via errorMessages.ts.
+- Data is preserved because Pinia state is retained upon failure and the user stays on Step 4 (review).
+- The useToast setup in app allows a retryCallback (triggered on offline/timeout via submitForm).
+- 422 validation errors are extracted in axios.ts, mapped to field errors, and tied to specific steps (1, 2, or 3).
+- The user is navigated to the affected step upon 422 using store.goToStep(affectedStep).
+- Error messages are passed down to step components via stepRef.value.setServerErrors.
+- Added reactive 'errors' ref, 'setServerErrors' mapping, and UI bindings (:error) for organization, urgency, deadline, budget, helpType, and tags.
+- Verified build: 'cd frontend && npm run build' completed successfully without errors.

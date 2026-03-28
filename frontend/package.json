@@ -6,12 +6,20 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "preview": "nuxt preview",
+    "start": "node scripts/start-prod.mjs",
     "lint": "eslint ."
   },
   "dependencies": {
-    "nuxt": "^3.12.0"
+    "@nuxt/kit": "^4.4.2",
+    "@pinia/nuxt": "^0.5.1",
+    "@vueuse/core": "^10.11.0",
+    "axios": "^1.7.2",
+    "nuxt": "^3.12.0",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1"
   },
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.12.0"
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "playwright": "^1.58.2"
   }
 }

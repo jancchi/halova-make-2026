@@ -1,0 +1,65 @@
+import axios from 'axios'
+import { getAuthToken } from './token'
+
+const getBaseURL = (): string => {
+  if (typeof window === 'undefined') {
+    return process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000'
+  }
+  
+  try {
+    return useRuntimeConfig().public.apiBase
+  } catch {
+    return 'http://localhost:8000'
+  }
+}
+
+const apiClient = axios.create({
+  baseURL: getBaseURL(),
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+apiClient.interceptors.request.use((config) => {
+  const token = getAuthToken()
+
+  if (token) {
+    config.headers = config.headers ?? {}
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  return config
+})
+
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const normalized: any = {
+      message: error.message || 'Unknown error',
+    }
+    
+    if (error.code === 'ECONNABORTED') {
+      normalized.isTimeout = true
+      normalized.message = 'Request timeout'
+    } else if (error.code === 'ERR_NETWORK') {
+      normalized.isOffline = true
+      normalized.message = 'Network unavailable'
+    }
+    
+    if (error.response) {
+      normalized.status = error.response.status
+      normalized.message = error.response.data?.message || error.message
+      
+      // Capture 422 validation errors with field details
+      if (error.response.status === 422) {
+        normalized.validationErrors = error.response.data?.detail || []
+        normalized.message = 'Overenie údajov zlyhalo'
+      }
+    }
+    
+    return Promise.reject(normalized)
+  }
+)
+
+export default apiClient

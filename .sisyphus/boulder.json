@@ -1,0 +1,112 @@
+{
+  "active_plan": "/home/exod/git/halova-make-2026/.sisyphus/plans/community-request-nuxt-frontend.md",
+  "started_at": "2026-03-28T09:41:56.797Z",
+  "session_ids": [
+    "ses_2cc40c856ffe0vyTNsGUzpCWzS",
+    "ses_2cc29985dffeKiGVd3B3BJp2Gg",
+    "ses_2cc2a20ddffeVoEEonGIMZCSOe",
+    "ses_2cc28dfbbffeMaQsZ5lNgULFbT",
+    "ses_2cc2ba12effeS1do7yg9HnppYt",
+    "ses_2cc2aabb7ffeO5I2sznE2UqL19",
+    "ses_2cc2b1c97ffe75Ys4B5iaIOyD1",
+    "ses_2cc168f43ffegUQ6Q3tsYQp4db",
+    "ses_2cc17f2a6ffeMxd2Augo9OPet1",
+    "ses_2cc16db2dffe4TXO0Amrk1wjyx",
+    "ses_2cc1792bcffeM0QI05ltuCp72M",
+    "ses_2cc17366effeuRHs3NjgK2NKnG",
+    "ses_2cbeafcfdffeZg0Ht5VtMy8dAP",
+    "ses_2cbe7287cffe9IKnOJh6EEDD8Z",
+    "ses_2cbe72881ffev7GiHV8ulrl9GR",
+    "ses_2cbe727b1ffesQWAfmmhqGSLui",
+    "ses_2cbd5ce13ffebBKqq5IOSIkT9e",
+    "ses_2cb9d28d4ffergQtEJMCC86QXz",
+    "ses_2cb9d2a89ffettnhV8JteJ4U9q",
+    "ses_2cb9d28cfffeXd0EOmf3T1390e",
+    "ses_2cb9d2a8dffeH84da8Vs3okXfc",
+    "ses_2cb9d2c44ffeXWs5eITaUPrPdZ",
+    "ses_2cb99638cffecpl4T558XkVMZE",
+    "ses_2cb78fa0effe0DYI2LmxFgaWqa",
+    "ses_2cb74321cffeEpvK2158vfhYKo",
+    "ses_2cb6a922affeGVT5JHH9S15BE4",
+    "ses_2cb5fc120ffeR94Zux26vZUIqJ",
+    "ses_2cb5f7815ffe0M1avkxY4JB4wj",
+    "ses_2cb5f7327ffeUDztBOEVEK353U",
+    "ses_2cb5fbedeffe1ttpKmGdlXudRC"
+  ],
+  "plan_name": "community-request-nuxt-frontend",
+  "agent": "atlas",
+  "task_sessions": {
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Nuxt foundation + dependencies + runtime contracts",
+      "session_id": "ses_2cc2ba12effeS1do7yg9HnppYt",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-03-28T09:56:44.953Z"
+    },
+    "todo:7": {
+      "task_key": "todo:7",
+      "task_label": "7",
+      "task_title": "Home hero section with editorial headline and reveal motion",
+      "session_id": "ses_2cc17f2a6ffeMxd2Augo9OPet1",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-03-28T10:09:58.347Z"
+    },
+    "todo:12": {
+      "task_key": "todo:12",
+      "task_label": "12",
+      "task_title": "Global toast orchestration and API error mapping policy",
+      "session_id": "ses_2cbeafcfdffeZg0Ht5VtMy8dAP",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-03-28T10:57:15.202Z"
+    },
+    "todo:13": {
+      "task_key": "todo:13",
+      "task_label": "13",
+      "task_title": "Form route scaffold + split layout + step indicator + transitions",
+      "session_id": "ses_2cbd5ce13ffebBKqq5IOSIkT9e",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-03-28T11:23:15.262Z"
+    },
+    "todo:17": {
+      "task_key": "todo:17",
+      "task_label": "17",
+      "task_title": "Step 4 Review + submit orchestration",
+      "session_id": "ses_2cb7fb5c5ffeUAiwOCo4aHnHKg",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-03-28T12:54:21.116Z"
+    },
+    "todo:19": {
+      "task_key": "todo:19",
+      "task_label": "19",
+      "task_title": "Responsive tuning pass for typography, spacing, and controls",
+      "session_id": "ses_2cb74321cffeEpvK2158vfhYKo",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-03-28T13:09:14.114Z"
+    },
+    "todo:21": {
+      "task_key": "todo:21",
+      "task_label": "21",
+      "task_title": "Failure-mode hardening (offline, timeout, 422)",
+      "session_id": "ses_2cb6a922affeGVT5JHH9S15BE4",
+      "agent": "Sisyphus-Junior",
+      "category": "visual-engineering",
+      "updated_at": "2026-03-28T13:19:13.641Z"
+    },
+    "todo:22": {
+      "task_key": "todo:22",
+      "task_label": "22",
+      "task_title": "Final integration polish + commands verification + frontend docs note",
+      "session_id": "ses_2cb653ca3ffeOaxSZOXn9v3swz",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-03-28T13:22:21.625Z"
+    }
+  }
+}
